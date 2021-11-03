@@ -42,7 +42,7 @@ class PostController extends Controller
         $post['image'] = uniqid() . '-' . $request->title . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $post['image']);
 
-        dd($post);
+
 
         Post::create($post);
 
