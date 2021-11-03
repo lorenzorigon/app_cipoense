@@ -1,1 +1,5 @@
-create_edit
+@extends('layouts.app')
+
+@section('content')
+
+@endsection
