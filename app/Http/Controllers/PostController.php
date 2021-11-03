@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Post|Post[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * @return Post|Post[]|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function index()
     {
         $posts = Post::all();
-        return $posts;
+        return view('post.index', ['posts' => $posts]);
     }
 
     /**
@@ -26,46 +25,48 @@ class PostController extends Controller
      */
     public function create()
     {
-        return 'view post.create';
+        return view('post.create_edit');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $post = $request->only(['title', 'description', 'content']);
-        $post->user_id = Auth::user()->id;
+        $post->user_id = auth()->user()->id;
 
         $post->image = uniqid() . '-' . $request->title . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $post->image);
 
         Post::create($post);
+
+        return redirect()->back()->with('message', 'Post criado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      *
      * @param int $id
-     * @return Post
      */
     public function show($id)
     {
-        return Post::where($id);
+        $post = Post::where($id);
+        return view('post.show', ['post' => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //return view post.edit
+        $post = Post::where($id);
+        return view('post.create_edit', ['post' => $post]);
     }
 
     /**
@@ -83,6 +84,7 @@ class PostController extends Controller
             'content' => $request->input('content'),
             'user_id' => auth()->user()->id,
         ]);
+        return response();
     }
 
     /**
@@ -95,6 +97,6 @@ class PostController extends Controller
     {
         $post = Post::where($id);
         $post->delete();
-        return 'Post deletado';
+        return redirect()->back()->with('message', 'Post deletado com sucesso!');
     }
 }
