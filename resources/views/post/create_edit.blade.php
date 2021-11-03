@@ -9,15 +9,15 @@
                     <h1 class="text-center">Adicionar Notícia</h1>
                     <div class="mb-3">
                         <label for="title" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="title" name="title">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="{{isset($post) ? $post->title : ''}}">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrição</label>
-                        <textarea  class="form-control" id="content" name="description"></textarea>
+                        <textarea  class="form-control" id="content" name="description">{{isset($post) ? $post->description : ''}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Conteúdo</label>
-                        <textarea  class="form-control" id="content" name="content"></textarea>
+                        <textarea  class="form-control" id="content" name="content">{{isset($post) ? $post->content : ''}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="image">Escolha a imagem: </label>

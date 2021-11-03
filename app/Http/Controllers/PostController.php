@@ -42,32 +42,24 @@ class PostController extends Controller
         $post['image'] = uniqid() . '-' . $request->title . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $post['image']);
 
+        dd($post);
 
         Post::create($post);
 
         return redirect()->back()->with('message', 'Post criado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     */
+
     public function show($id)
     {
-        $post = Post::where($id);
+        $post = Post::query()->where('id', $id)->first();
         return view('post.show', ['post' => $post]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     */
+
     public function edit($id)
     {
-        $post = Post::where($id);
-        return view('post.create_edit', ['post' => $post]);
+        return view('post.create_edit')->with('post', Post::where('id',$id)->first());
     }
 
     /**
