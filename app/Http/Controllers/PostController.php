@@ -67,17 +67,18 @@ class PostController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        Post::where($id)->update([
+        Post::where('id', $id)->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'content' => $request->input('content'),
             'user_id' => auth()->user()->id,
         ]);
-        return response();
+
+        return redirect()->back();
     }
 
     /**
