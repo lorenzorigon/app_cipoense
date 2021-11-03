@@ -37,10 +37,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = $request->only(['title', 'description', 'content']);
-        $post->user_id = auth()->user()->id;
+        $post['user_id'] = auth()->user()->id;
 
-        $post->image = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $post->image);
+        $post['image'] = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $post['image']);
+
 
         Post::create($post);
 

@@ -1,22 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <h1 class="text-center">Adicionar Notícia</h1>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descrição</label>
+                        <textarea  class="form-control" id="content" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Conteúdo</label>
+                        <textarea  class="form-control" id="content" name="content"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image">Escolha a imagem: </label>
+                        <input type="file"  id="image" class="form-control-file" name="image">
+                    </div>
+                    <button type="submit" class="btn btn-success">Adicionar Notícica</button>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
-<!--<div class="container">
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <img class="img-fluid" src="https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_960_720.jpg" alt="notebook">
-            </div>
-            <div class="col-md-5 text-center">
-                <h1>Lorem Ipsulum</h1>
-                <p class="mt-4 text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto consequatur consequuntur culpa doloremque harum labore libero obcaecati perferendis praesentium repellat repellendus sit, tenetur. Delectus doloribus labore laboriosam quidem velit.</p>
-                <a href="#" class="btn btn-outline-info">Saiba mais</a>
-            </div>
-            <div class="col-md-3" style="border: 1px solid black;">
-                <p>Propaganda</p>
-            </div>
-        </div>
-    </div> -->
+
