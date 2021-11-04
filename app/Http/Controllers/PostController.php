@@ -78,7 +78,7 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Notícia editada com sucesso!');
     }
 
     /**

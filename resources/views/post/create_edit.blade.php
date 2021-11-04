@@ -12,6 +12,10 @@
                 @endif
                         @csrf
 
+                        @if(session('message'))
+                            <p class="alert alert-success text-center">{{session('message')}}</p>
+                        @endif
+
                         @if(isset($post))
                             <h1 class="text-center">Editar Notícia</h1>
                         @else
@@ -21,7 +25,7 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Título</label>
                             <input type="text" class="form-control" id="title" name="title"
-                                   placeholder="{{isset($post) ? $post->title : ''}}" value="{{$post->title}}">
+                                   placeholder="{{isset($post) ? $post->title : ''}}" value="{{isset($post->title) ? $post->title : ''}}">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrição</label>
@@ -37,7 +41,7 @@
                             <label for="image">Escolha a imagem: </label>
                             <input type="file" id="image" class="form-control-file" name="image">
                         </div>
-                        <button type="submit" class="btn btn-success">Adicionar Notícica</button>
+                        <button type="submit" class="btn btn-success">{{isset($post) ? "Editar Notícia" : "Adicionar Notícica" }}</button>
                     </form>
             </div>
         </div>
