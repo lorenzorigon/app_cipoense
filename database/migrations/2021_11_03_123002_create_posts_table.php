@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('description');
+            $table->string('source');
+            $table->string('linkSource');
             $table->text('content');
             $table->string('image');
             $table->unsignedBigInteger('user_id');

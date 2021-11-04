@@ -4,7 +4,7 @@
     <div class="container-fluid text-center">
             <div class="offset-3 col-md-6">
             <h1 class="">{{$post->title}}</h1>
-            <p class="text-right">Escrito por <span class="font-italic" style="color: gray">{{$post->user->name}}</span> {{date('d/M', strtotime($post->created_at))}}</p>
+            <p class="text-right"><span class="font-italic" style="color: gray">{{$post->user->name}} </span>  {{date('d/M', strtotime($post->created_at))}}</p>
             </div>
 
 
@@ -14,6 +14,9 @@
             </div>
             <div class="col-md-7">
                 <p class="text-left">{{$post->content}}</p>
+            </div>
+            <div class="col-12 text-right">
+                <p class="mr-4">Fonte: <a  target="_blank" href="{{$post->linkSource}}">{{$post->source}}</a></p>
             </div>
         </div>
 

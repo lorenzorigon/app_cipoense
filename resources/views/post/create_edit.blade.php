@@ -22,10 +22,16 @@
                             <h1 class="text-center">Adicionar Notícia</h1>
                         @endif
 
-                        <div class="mb-3">
+                        <div class="mb-3 form-group">
                             <label for="title" class="form-label">Título</label>
                             <input type="text" class="form-control" id="title" name="title"
                                    placeholder="{{isset($post) ? $post->title : ''}}" value="{{isset($post->title) ? $post->title : ''}}">
+                        </div>
+                        <div class="mb-2 form-group row align-items-center">
+                            <label for="source" class="col-1 form-label">Fonte</label>
+                            <input class=" ml-2 col-4 form-control mr-4" id="source" name="source" value="{{isset($post) ? $post->source : ''}}">
+                            <label for="linkSource" class="col-1 form-label">Link</label>
+                            <input class=" ml-2 col-5 form-control" id="linkSource" name="linkSource" value="{{isset($post) ? $post->linkSource : ''}}">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrição</label>
