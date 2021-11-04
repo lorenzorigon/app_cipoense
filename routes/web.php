@@ -24,4 +24,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //POSTS
-Route::resource('post',PostController::class);
+
+Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
+    Route::resource('post',PostController::class);
+});
+

@@ -71,11 +71,23 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        if (isset($request->image)) {
+            $image = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $image);
+            $request->image = $image;
+        }else{
+            $request->image = Post::query()->where('id', $id)->get();
+        }
+
+        dd($request->image);
+
         Post::where('id', $id)->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'content' => $request->input('content'),
             'user_id' => auth()->user()->id,
+            'image' => $request->image,
         ]);
 
         return redirect()->back()->with('message', 'Notícia editada com sucesso!');
