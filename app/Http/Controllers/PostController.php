@@ -36,7 +36,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = $request->only(['title', 'description', 'content', 'source', 'linkSource']);
+        $post = $request->only(['title', 'description', 'content', 'source', 'link_source']);
         $post['user_id'] = auth()->user()->id;
 
         $post['image'] = uniqid() . '-' . $request->title . '.' . $request->image->extension();

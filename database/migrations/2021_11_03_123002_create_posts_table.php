@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('source');
-            $table->string('linkSource');
+            $table->string('link_source');
             $table->text('content');
             $table->string('image');
             $table->unsignedBigInteger('user_id');
