@@ -72,15 +72,17 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
 
+        //tratamento pra verificar se foi ou não alterada a imagem
         if (isset($request->image)) {
             $image = uniqid() . '-' . $request->title . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $image);
             $request->image = $image;
         }else{
-            $request->image = Post::query()->where('id', $id)->get();
+            $requestImage= Post::query()->where('id', $id)->first();
+            $request->image = $requestImage->image;
         }
 
-        dd($request->image);
+
 
         Post::where('id', $id)->update([
             'title' => $request->input('title'),
