@@ -28,10 +28,9 @@ Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
     Route::resource('post',PostController::class)->except('index', 'show');
 });
 
-//POSTS Public
-
+//POSTS PUBLIC
 Route::group(['prefix' => 'post'], function (){
-    Route::get('/', [PostController::class, 'index']);
-    Route::get('/{post}', [PostController::class , 'show']);
+    Route::get('/', [PostController::class, 'index'])->name('post');
+    Route::get('/{post}', [PostController::class , 'show'])->name('post.show');
 });
 
