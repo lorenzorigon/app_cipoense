@@ -16,7 +16,7 @@
                 <p class="text-left">{{$post->content}}</p>
             </div>
             <div class="col-12 text-right">
-                <p class="mr-4">Fonte: <a  target="_blank" href="{{$post->linkSource}}">{{$post->source}}</a></p>
+                <p class="mr-4">Fonte: <a  target="_blank" href="{{$post->link_source}}">{{$post->source}}</a></p>
             </div>
         </div>
 
