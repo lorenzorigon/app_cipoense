@@ -103,8 +103,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::where($id);
+        $post = Post::where('id', $id)->first();
         $post->delete();
-        return redirect()->back()->with('message', 'Post deletado com sucesso!');
+        return redirect()->route('post.create')->with('message', 'Post deletado com sucesso!');
     }
 }
