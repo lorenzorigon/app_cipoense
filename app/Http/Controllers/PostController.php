@@ -15,7 +15,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::simplePaginate(4);
-        return view('post.index', ['posts' => $posts]);
+        return view('site.post.index', ['posts' => $posts]);
+    }
+
+    public function indexAdmin(){
+        $posts = Post::where('user_id', auth()->user()->id)->get();
+        return view('admin.post.index', ['posts' => $posts]);
     }
 
     /**
@@ -25,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create_edit');
+        return view('admin.post.create_edit');
     }
 
     /**
@@ -53,13 +58,13 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::query()->where('id', $id)->first();
-        return view('post.show', ['post' => $post]);
+        return view('site.post.show', ['post' => $post]);
     }
 
 
     public function edit($id)
     {
-        return view('post.create_edit')->with('post', Post::where('id',$id)->first());
+        return view('admin.post.create_edit')->with('post', Post::where('id',$id)->first());
     }
 
     /**
