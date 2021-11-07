@@ -32,13 +32,12 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id){
-        $category = Category::where('id', $id);
-        $category->save($request->only('name'));
+        Category::where('id', $id)->update(['name' => $request->name]);
         return redirect()->route('category.index');
     }
 
     public function destroy($id){
-        $category = Category::where('id', $id);
+        $category = Category::where('id', $id)->first();
         $category->delete();
         return redirect()->route('category.index');
     }
