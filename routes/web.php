@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
 });
 
 //ADMIN INDEX
-Route::get('/', function (){
+Route::get('admin', function (){
    return view('admin.index');
 })->prefix('admin');
 
