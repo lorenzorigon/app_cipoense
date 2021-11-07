@@ -31,7 +31,9 @@ Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
 });
 
 //CATEGORY ADMIN
-Route::resource('category', CategoryController::class);
+Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
+    Route::resource('category',CategoryController::class);
+});
 
 
 
