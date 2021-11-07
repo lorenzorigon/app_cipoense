@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,12 @@ Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
     Route::resource('post',PostController::class)->except('index', 'show');
     Route::get('post', [PostController::class, 'indexAdmin']);
 });
+
+//CATEGORY ADMIN
+Route::resource('category', CategoryController::class);
+
+
+
 
 //POSTS PUBLIC
 Route::group(['prefix' => 'post'], function (){
