@@ -95,6 +95,7 @@ class PostController extends Controller
             'content' => $request->input('content'),
             'user_id' => auth()->user()->id,
             'image' => $request->image,
+            'category_id' => $request->category,
         ]);
 
         return redirect()->back()->with('message', 'Notícia editada com sucesso!');
