@@ -24,4 +24,8 @@ class Category extends Model
           'name.max' => 'A categoria deve conter até 25 caracteres'
         ];
     }
+
+    public function posts(){
+        return $this->belongsToMany(Post::class);
+    }
 }

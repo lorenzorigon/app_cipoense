@@ -23,8 +23,10 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('image');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('posts');
         });
     }
 
@@ -37,6 +39,7 @@ class CreatePostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table){
             $table->dropForeign('posts_user_id_foreign');
+            $table->dropForeign('posts_category_id_foreign');
         });
 
         Schema::dropIfExists('posts');
