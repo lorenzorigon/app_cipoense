@@ -19,13 +19,5 @@
                 <p class="mr-4">Fonte: <a  target="_blank" href="{{$post->link_source}}">{{$post->source}}</a></p>
             </div>
         </div>
-
-        <div class="col-2">
-            <form action="{{route('post.destroy', ['post' => $post->id])}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Excluir</button>
-            </form>
-        </div>
     </div>
 @endsection

@@ -17,8 +17,14 @@
                         <th scope="row">{{$category->id}}</th>
                         <td>{{$category->name}}</td>
                         <td>
-                            <a class="btn btn-success">Editar</a>
-                            <a class="btn btn-danger">Excluir</a>
+                            <div class="row ml-2">
+                                <a href="{{route('category.edit', ['category' => $category->id])}}" class="btn btn-success ml">Editar</a>
+                                <form action="{{route('category.destroy', ['category' => $category->id])}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger ml-2">Excluir</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

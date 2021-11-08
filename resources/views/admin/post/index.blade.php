@@ -17,8 +17,15 @@
                         <th scope="row">{{$post->id}}</th>
                         <td>{{$post->title}}</td>
                         <td>
-                            <a class="btn btn-success">Editar</a>
-                            <a class="btn btn-danger">Excluir</a>
+                            <div class="row ml-2">
+                                <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-primary">Visualizar</a>
+                                <a href="{{route('post.edit', ['post' => $post->id])}}" class="btn btn-success ml-2">Editar</a>
+                                <form action="{{route('post.destroy', ['post' => $post->id])}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger ml-2">Excluir</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
