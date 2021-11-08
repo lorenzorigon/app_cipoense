@@ -3,11 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <table class="table table-striped table-bordered" style="max-width: 500px">
+            <table class="table table-striped table-bordered" style="max-width: 900px">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Título</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -16,6 +17,7 @@
                     <tr>
                         <th scope="row">{{$post->id}}</th>
                         <td>{{$post->title}}</td>
+                        <td>{{$post->category->name}}</td>
                         <td>
                             <div class="row ml-2">
                                 <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-primary">Visualizar</a>
