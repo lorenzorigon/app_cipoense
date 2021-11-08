@@ -14,14 +14,14 @@ class Category extends Model
     public static function rules()
     {
            return [
-               'name' => 'required|max:50'
+               'name' => 'required|max:25'
            ];
     }
 
     public static function feedback(){
         return [
           'name.required' => 'Preencha a categoria',
-          'name.max' => 'A categoria deve conter até 50 caracteres'
+          'name.max' => 'A categoria deve conter até 25 caracteres'
         ];
     }
 }
