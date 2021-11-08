@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create_edit');
+        return view('admin.post.create_edit', ['categories' => Category::all()]);
     }
 
     /**
@@ -42,16 +43,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = $request->only(['title', 'description', 'content', 'source', 'link_source']);
+        $post['category_id'] = $request->category;
         $post['user_id'] = auth()->user()->id;
 
         $post['image'] = uniqid() . '-' . $request->title . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $post['image']);
 
-
-
         Post::create($post);
 
-        return redirect()->back()->with('message', 'Post criado com sucesso!');
+        return redirect()->route('post.indexAdmin');
     }
 
 
@@ -64,7 +64,7 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        return view('admin.post.create_edit')->with('post', Post::where('id',$id)->first());
+        return view('admin.post.create_edit', ['post' => Post::with('category')->where('id', $id)->first(), 'categories' => Category::all()]);
     }
 
     /**

@@ -26,7 +26,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('category_id');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('posts');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //POSTS ADMIN
 Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
     Route::resource('post',PostController::class)->except('index', 'show');
-    Route::get('post', [PostController::class, 'indexAdmin']);
+    Route::get('post', [PostController::class, 'indexAdmin'])->name('post.indexAdmin');
 });
 
 //CATEGORY ADMIN
