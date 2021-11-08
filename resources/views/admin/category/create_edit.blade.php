@@ -28,6 +28,9 @@
                                            placeholder="{{isset($category) ? $category->name : ''}}"
                                            value="{{isset($category->name) ? $category->name : ''}}">
                                 </div>
+                                @if($errors->any())
+                                    <p class="alert alert-danger text-center p-1">{!! implode('', $errors->all(':message')) !!}</p>
+                                @endif
                                 <button type="submit"
                                         class="btn btn-success">{{isset($category) ? "Editar Categoria" : "Adicionar Categoria" }}</button>
                             </form>

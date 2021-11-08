@@ -22,6 +22,7 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate(Category::rules(), Category::feedback());
         Category::create($request->only('name'));
         return redirect()->route('category.index');
     }
@@ -32,6 +33,7 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate(Category::rules(), Category::feedback());
         Category::where('id', $id)->update(['name' => $request->name]);
         return redirect()->route('category.index');
     }
