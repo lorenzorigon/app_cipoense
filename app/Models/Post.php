@@ -18,4 +18,23 @@ class Post extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public static function rules(){
+        return [
+            'title' => 'required',
+            'description' => 'required',
+            'source' => 'required',
+            'link_source' => 'required',
+            'content' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
+            'category' => 'required',
+        ];
+    }
+
+    public static function feedback(){
+        return [
+            'required' => 'Você precisa preencher esse campo!',
+
+        ];
+    }
 }

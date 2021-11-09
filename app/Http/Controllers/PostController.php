@@ -43,6 +43,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(Post::rules(), Post::feedback());
+
         $post = $request->only(['title', 'description', 'content', 'source', 'link_source']);
         $post['category_id'] = $request->category;
         $post['user_id'] = auth()->user()->id;
@@ -79,7 +81,7 @@ class PostController extends Controller
     {
         $requestImage= Post::query()->where('id', $id)->first();
         unlink(public_path('images/'.$requestImage->image));
-        
+
         //tratamento pra verificar se foi ou não alterada a imagem
         if (isset($request->image)) {
             $image = uniqid() . '-' . $request->title . '.' . $request->image->extension();
