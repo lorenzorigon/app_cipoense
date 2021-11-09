@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -17,8 +18,10 @@ class UserSeeder extends Seeder
         User::insert([
             'name' => 'Lorenzo Rigon',
             'email' => 'lorenzocardoso@hotmail.com',
-            'password' => '12345678',
+            'password' => bcrypt('12345678'),
             'is_admin' => 1,
+            'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
         ]);
     }
 }

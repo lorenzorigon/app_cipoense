@@ -46,23 +46,27 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrição</label>
-                            <textarea class="form-control" id="content"
-                                      name="description">{{isset($post) ? $post->description : ''}}</textarea>
+                            <trix-editor class="form-control"
+                                      name="description">{{isset($post) ? $post->description : ''}}</trix-editor>
                         </div>
+
                         <div class="mb-3">
                             <label for="content" class="form-label">Conteúdo</label>
-                            <textarea class="form-control" id="content"
-                                      name="content">{{isset($post) ? $post->content : ''}}</textarea>
+                            <trix-editor class="form-control" id="content"
+                                      name="content">{{isset($post) ? $post->content : ''}}</trix-editor>
                         </div>
+
                         <div class="mb-3">
                             <label for="image">Escolha a imagem: </label>
                             <input type="file" id="image" class="form-control-file" name="image">
                         </div>
                         <button type="submit" class="btn btn-success">{{isset($post) ? "Editar Notícia" : "Adicionar Notícica" }}</button>
                     </form>
+                    </form>
             </div>
         </div>
     </div>
+
 @endsection
 
 
