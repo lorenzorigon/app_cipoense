@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
@@ -36,9 +37,7 @@ Route::group(['prefix' => 'admin'], function (){ //adicionar middleware admin
 });
 
 //ADMIN INDEX
-Route::get('home', function (){
-   return view('admin.index');
-})->prefix('admin');
+Route::get('home',[AdminController::class, 'index'])->prefix('admin');
 
 
 

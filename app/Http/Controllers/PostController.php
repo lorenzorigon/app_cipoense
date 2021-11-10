@@ -93,7 +93,7 @@ class PostController extends Controller
 
 
 
-        Post::where('id', $id)->update([
+        $post->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'content' => $request->input('content'),
