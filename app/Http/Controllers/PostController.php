@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::simplePaginate(4);
-        return view('site.post.index', ['posts' => $posts]);
+        return view('site.index', ['posts' => $posts]);
     }
 
     public function indexAdmin(){
@@ -61,7 +61,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::query()->where('id', $id)->first();
-        return view('site.post.show', ['post' => $post]);
+        return view('site.show', ['post' => $post]);
     }
 
 
