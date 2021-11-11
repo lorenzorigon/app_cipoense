@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -46,4 +47,9 @@ Route::group(['prefix' => 'post'], function (){
     Route::get('/', [PostController::class, 'index'])->name('post');
     Route::get('/{post}', [PostController::class , 'show'])->name('post.show');
 });
+
+//SITE
+Route::get('about', [PageController::class, 'about']);
+Route::get('schedule', [PageController::class, 'schedule']);
+Route::get('announcers', [PageController::class, 'announcers']);
 
