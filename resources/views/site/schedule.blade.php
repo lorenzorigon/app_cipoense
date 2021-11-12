@@ -1,1 +1,5 @@
-<h1>Programação</h1>
+@extends('layouts.site');
+
+@section('content')
+    Programação!
+@endsection
