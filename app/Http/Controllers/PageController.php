@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index()
     {
-        //aqui?
+        $posts = Post::simplePaginate(4);
+        return view('site.index', ['posts' => $posts]);
     }
 
-    public function show()
+    public function show($id)
     {
-        //aqui?
+        $post = Post::query()->where('id', $id)->first();
+        return view('site.show', ['post' => $post]);
     }
 
     public function about()

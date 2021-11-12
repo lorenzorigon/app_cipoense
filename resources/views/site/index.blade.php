@@ -13,7 +13,7 @@
                              alt="{{$posts[0]->title}}">
                         <h1>{{$posts[0]->title}}</h1>
                         <p class="mt-4 text-center">{{$posts[0]->description}}</p>
-                        <a href="{{route('post.show', ['post' => $posts[0]->id])}}" class="btn btn-outline-info">Saiba
+                        <a href="{{route('show', ['post' => $posts[0]->id])}}" class="btn btn-outline-info">Saiba
                             mais</a>
                     </div>
                     <div class="offset-1 col-md-4 p-4 mt-2 mb-2">
@@ -38,7 +38,7 @@
                                  alt="{{$posts[$i]->title}}">
                             <h1>{{$posts[$i]->title}}</h1>
                             <p class="mt-4">{{$posts[$i]->description}}</p>
-                            <a href="{{route('post.show', ['post' => $posts[$i]->id])}}" class="btn btn-outline-info">Saiba
+                            <a href="{{route('show', ['post' => $posts[$i]->id])}}" class="btn btn-outline-info">Saiba
                                 mais</a>
                         </div>
                     @endfor

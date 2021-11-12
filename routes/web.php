@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -42,14 +38,10 @@ Route::get('home',[AdminController::class, 'index'])->prefix('admin');
 
 
 
-//POSTS PUBLIC
-Route::group(['prefix' => 'post'], function (){
-    Route::get('/', [PostController::class, 'index'])->name('post');
-    Route::get('/{post}', [PostController::class , 'show'])->name('post.show');
-});
-
-//SITE
-Route::get('about', [PageController::class, 'about']);
-Route::get('schedule', [PageController::class, 'schedule']);
-Route::get('announcers', [PageController::class, 'announcers']);
+//SITE (PUBLIC)
+Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/{post}',[PageController::class, 'show'])->name('show')->prefix('post');
+Route::get('about', [PageController::class, 'about'])->name('about');
+Route::get('schedule', [PageController::class, 'schedule'])->name('schedule');
+Route::get('announcers', [PageController::class, 'announcers'])->name('announcers');
 

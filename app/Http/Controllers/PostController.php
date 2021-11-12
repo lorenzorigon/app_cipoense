@@ -9,17 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Post|Post[]|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $posts = Post::simplePaginate(4);
-        return view('site.index', ['posts' => $posts]);
-    }
-
     public function indexAdmin(){
         $posts = Post::with('category')->where('user_id', auth()->user()->id)->get();
         return view('admin.post.index', ['posts' => $posts]);
@@ -56,14 +45,6 @@ class PostController extends Controller
 
         return redirect()->route('post.indexAdmin');
     }
-
-
-    public function show($id)
-    {
-        $post = Post::query()->where('id', $id)->first();
-        return view('site.show', ['post' => $post]);
-    }
-
 
     public function edit($id)
     {

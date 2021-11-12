@@ -20,7 +20,7 @@
                         <td>{{$post->category->name}}</td>
                         <td>
                             <div class="row ml-2">
-                                <a href="{{route('post.show', ['post' => $post->id])}}" class="btn btn-primary">Visualizar</a>
+                                <a href="{{route('show', ['post' => $post->id])}}" class="btn btn-primary">Visualizar</a>
                                 <a href="{{route('post.edit', ['post' => $post->id])}}" class="btn btn-success ml-2">Editar</a>
                                 <form action="{{route('post.destroy', ['post' => $post->id])}}" method="post">
                                     @csrf
