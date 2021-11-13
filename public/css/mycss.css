@@ -1,0 +1,43 @@
+/* EStilos Gerais */
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.row{
+    margin: 0;
+}
+
+
+p,li{
+    color: black;
+    font-size: 14px;
+}
+
+/* Barra de Navegação*/
+header, .navbar{
+    background-color: #1b1796;
+}
+
+
+#nav-container{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#logo{
+    width: 75px;
+}
+
+.navbar-brand{
+    padding: 0;
+}
+
+#navbar-links a{
+    padding: 10px;
+    color: #FFF;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link{
+    padding: 1rem .8rem;
+}
